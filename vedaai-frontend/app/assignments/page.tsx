@@ -113,8 +113,8 @@ export default function AssignmentsPage() {
 
         {/* ── Filter + Search row ── */}
         {assignments.length > 0 && (
-          <div className="flex items-center gap-3 mb-6 mt-3">
-            {/* Filter By pill — exact Figma but acting as native select wrapper */}
+          <div className="flex items-center bg-white rounded-2xl p-2 mb-6 mt-3 shadow-sm">
+            {/* Filter pill — natural look from screenshot */}
             <div className="relative">
               <select
                 value={statusFilter}
@@ -126,28 +126,29 @@ export default function AssignmentsPage() {
                 <option value="Generating">Generating</option>
                 <option value="Failed">Failed</option>
               </select>
-              <button className="flex items-center gap-2 px-4 py-3 bg-transparent
-                text-[14px] font-medium text-[#9CA3AF] flex-shrink-0 transition-colors hover:text-gray-600">
-                {/* Funnel icon */}
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <button className="flex items-center gap-2 px-5 py-2.5 bg-transparent
+                text-[15px] font-medium text-[#9CA3AF] flex-shrink-0 transition-colors hover:text-gray-600">
+                {/* Funnel icon exact from screenshot (hollow outline) */}
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round"
                     d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
                 </svg>
-                {statusFilter === "All" ? "Filter By" : statusFilter}
+                {statusFilter === "All" ? "Filter" : statusFilter}
               </button>
             </div>
 
-            {/* Search bar — Figma: "Search Assignment" */}
-            <div className="flex-1 relative">
-              <svg className="absolute left-5 top-1/2 -translate-y-1/2 pointer-events-none"
+            {/* Search bar — wrapped in pill border */}
+            <div className="flex-1 relative ml-2">
+              <svg className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
                 width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                <circle cx="11" cy="11" r="8" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.3-4.3" />
               </svg>
               <input
-                className="w-full pl-[46px] pr-5 py-3.5 bg-white rounded-full
-                  text-[14px] font-medium text-gray-700 outline-none border border-gray-200
-                  focus:border-gray-300 focus:ring-2 focus:ring-gray-50 placeholder-[#9CA3AF] transition-all shadow-sm"
-                placeholder="Search Assignment"
+                className="w-full pl-[42px] pr-5 py-2.5 bg-white rounded-full
+                  text-[15px] font-medium text-gray-700 outline-none border border-gray-200
+                  focus:border-gray-300 focus:ring-1 focus:ring-gray-200 placeholder-[#9CA3AF] transition-all"
+                placeholder="Search Name"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
