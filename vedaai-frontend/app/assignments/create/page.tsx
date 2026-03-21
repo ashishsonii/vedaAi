@@ -187,7 +187,6 @@ export default function CreateAssignmentPage() {
               )}
               <button
                 type="button"
-                onClick={(e) => e.stopPropagation()}
                 className="mt-2 px-7 py-2.5 bg-white border border-gray-200 rounded-full text-[13px] font-bold text-gray-800 shadow-sm hover:bg-gray-50 transition-colors"
               >
                 Browse Files

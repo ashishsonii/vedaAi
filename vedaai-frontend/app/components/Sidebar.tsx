@@ -4,18 +4,18 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const NAV = [
-  { label: "Home",                href: "/home",        icon: HomeIcon        },
-  { label: "My Groups",           href: "/groups",      icon: GroupsIcon      },
-  { label: "Assignments",         href: "/assignments",  icon: AssignmentsIcon },
-  { label: "AI Teacher's Toolkit",href: "/toolkit",     icon: ToolkitIcon     },
-  { label: "My Library",          href: "/library",     icon: LibraryIcon     },
+  { label: "Home", href: "/home", icon: HomeIcon },
+  { label: "My Groups", href: "/groups", icon: GroupsIcon },
+  { label: "Assignments", href: "/assignments", icon: AssignmentsIcon },
+  { label: "AI Teacher's Toolkit", href: "/toolkit", icon: ToolkitIcon },
+  { label: "My Library", href: "/library", icon: LibraryIcon },
 ]
 
 const MOBILE_NAV = [
-  { label: "Home",       href: "/assignments", icon: HomeIcon        },
-  { label: "My Groups",  href: "/groups",      icon: GroupsIcon      },
-  { label: "Library",    href: "/library",     icon: LibraryIcon     },
-  { label: "AI Toolkit", href: "/toolkit",     icon: ToolkitIcon     },
+  { label: "Home", href: "/assignments", icon: HomeIcon },
+  { label: "My Groups", href: "/groups", icon: GroupsIcon },
+  { label: "Library", href: "/library", icon: LibraryIcon },
+  { label: "AI Toolkit", href: "/toolkit", icon: ToolkitIcon },
 ]
 
 export default function Sidebar() {
@@ -45,7 +45,7 @@ export default function Sidebar() {
           >
             {/* Sparkle icon */}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="white"/>
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="white" />
             </svg>
             Create Assignment
           </Link>
@@ -95,7 +95,7 @@ export default function Sidebar() {
           <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#EEEEEE] mt-2">
             <div className="w-9 h-9 rounded-full bg-[#FFE5D9] border-2 border-white flex items-center
               justify-center overflow-hidden flex-shrink-0">
-              <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=FFE5D9`} alt="Avatar" className="w-full h-full object-cover"/>
+              <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=FFE5D9`} alt="Avatar" className="w-full h-full object-cover" />
             </div>
             <div className="min-w-0">
               <p className="text-[13px] font-bold text-[#1C1C1E] truncate">Delhi Public School</p>
@@ -116,18 +116,18 @@ export default function Sidebar() {
             {/* Bell with red dot */}
             <div className="relative w-9 h-9 rounded-full bg-[#F2F2F2] flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#303030" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke="#303030" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#303030" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke="#303030" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <div className="absolute top-1 right-1.5 w-2 h-2 bg-[#FF3B30] rounded-full border border-white"/>
+              <div className="absolute top-1 right-1.5 w-2 h-2 bg-[#FF3B30] rounded-full border border-white" />
             </div>
             {/* Avatar */}
             <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=b6e3f4" alt="User" className="w-full h-full object-cover"/>
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=b6e3f4" alt="User" className="w-full h-full object-cover" />
             </div>
             {/* Hamburger */}
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1C1C1E" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </div>
         </div>
@@ -166,7 +166,7 @@ function HomeIcon({ active, darkBg }: { active: boolean; darkBg?: boolean }) {
   return (
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke={c} strokeWidth={active ? "2.5" : "2"}>
       <path strokeLinecap="round" strokeLinejoin="round"
-        d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
+        d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
     </svg>
   )
 }
@@ -187,7 +187,7 @@ function AssignmentsIcon({ active, darkBg }: { active: boolean; darkBg?: boolean
   return (
     <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke={c} strokeWidth={active ? "2.5" : "2"}>
       <path strokeLinecap="round" strokeLinejoin="round"
-        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
   )
 }
@@ -212,9 +212,9 @@ function LibraryIcon({ active, darkBg }: { active: boolean; darkBg?: boolean }) 
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth={active ? "2.2" : "1.8"}>
       <path strokeLinecap="round" strokeLinejoin="round"
-        d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M14 2v6h6"/>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 11v6M9 14h6"/>
+        d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14 2v6h6" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 11v6M9 14h6" />
     </svg>
   )
 }
@@ -222,8 +222,8 @@ function SettingsIcon() {
   return (
     <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" strokeWidth="2">
       <path strokeLinecap="round" strokeLinejoin="round"
-        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
   )
 }
@@ -257,17 +257,17 @@ function VedaAILogo({ darkIcon }: { darkIcon?: boolean }) {
         <svg width="36" height="36" viewBox="12 -2 56 56" fill="none">
           <defs>
             <linearGradient id="vedaGradD" x1="39.7144" y1="1.85519" x2="39.7144" y2="41.8552" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#E56820"/>
-              <stop offset="1" stopColor="#D45E3E"/>
+              <stop stopColor="#E56820" />
+              <stop offset="1" stopColor="#D45E3E" />
             </linearGradient>
           </defs>
-          <rect x="19.7144" y="1.85519" width="40" height="40" rx="10" fill="url(#vedaGradD)"/>
+          <rect x="19.7144" y="1.85519" width="40" height="40" rx="10" fill="url(#vedaGradD)" />
           <path fillRule="evenodd" clipRule="evenodd"
             d="M42.4414 30.2153C42.4414 30.2153 43.1689 32.1573 43.8356 32.2789H35.4113C33.7142 32.2789 32.1994 31.3079 31.7141 29.487L26.8051 14.9207C26.8051 14.9207 26.381 13.1606 25.7144 12.8571H34.3205C36.0176 12.9179 37.1691 13.5247 37.8358 15.7706L42.4414 30.2153Z"
-            fill="white"/>
+            fill="white" />
           <path fillRule="evenodd" clipRule="evenodd"
             d="M37.0472 30.2149C37.0472 30.2149 36.3198 32.1569 35.6531 32.2784H44.0774C45.7745 32.2784 47.2893 31.3074 47.7745 29.4865L52.6232 14.9207C52.6232 14.9207 53.0473 13.1606 53.714 12.8571H45.1681C43.471 12.8571 42.3803 13.464 41.7136 15.7098L37.0472 30.2149Z"
-            fill="white"/>
+            fill="white" />
         </svg>
       )}
 
