@@ -39,7 +39,7 @@ export default function Header({ title = "Assignment", showBack = false }: Heade
         )}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="hidden md:flex items-center gap-4">
         <button className="relative p-2 rounded-full bg-white shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#374151" strokeWidth="2">
             <path strokeLinecap="round" strokeLinejoin="round"
