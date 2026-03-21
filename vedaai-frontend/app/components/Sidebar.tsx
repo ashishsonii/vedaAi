@@ -12,7 +12,7 @@ const NAV = [
 ]
 
 const MOBILE_NAV = [
-  { label: "Home",       href: "/home",        icon: HomeIcon        },
+  { label: "Home",       href: "/assignments", icon: HomeIcon        },
   { label: "My Groups",  href: "/groups",      icon: GroupsIcon      },
   { label: "Library",    href: "/library",     icon: LibraryIcon     },
   { label: "AI Toolkit", href: "/toolkit",     icon: ToolkitIcon     },
