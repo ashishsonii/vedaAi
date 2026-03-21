@@ -26,7 +26,9 @@ export default function AssignmentResultPage() {
   if (status === "completed" && currentAssignment?.result) {
     return (
       <div className="min-h-screen bg-[#CECECE] md:bg-transparent pb-24 md:pb-8">
-        <Header title="Assignment" showBack />
+        <div className="hidden md:block">
+          <Header title="Assignment" showBack />
+        </div>
         <ExamPaper
           assignment={currentAssignment}
         />
@@ -36,7 +38,9 @@ export default function AssignmentResultPage() {
 
   return (
     <div className="min-h-screen bg-[#CECECE] md:bg-transparent">
-      <Header title="Assignment" showBack />
+      <div className="hidden md:block">
+        <Header title="Assignment" showBack />
+      </div>
       <div className="flex items-center justify-center min-h-[80vh]">
         <div className="text-center max-w-sm w-full px-6">
           {status === "failed" ? (
