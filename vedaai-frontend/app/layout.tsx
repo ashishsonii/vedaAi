@@ -10,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "VedaAI – AI Assessment Creator",
+  title: "VedaAI - by Ashish Soni",
   description: "Create AI-powered assignments and question papers",
 }
 

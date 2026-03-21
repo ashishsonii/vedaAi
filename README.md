@@ -1,5 +1,11 @@
 # VedaAI – AI Assessment Creator
 
+<p align="left">
+  <a href="https://vedaai-ashishsoni.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_Demo-View_Project-000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+</p>
+
 This repository contains the complete full-stack implementation of the **VedaAI Full Stack Engineering Assignment**. It is an AI-powered assessment creator that lets teachers generate structured question papers dynamically using LLMs, view the output cleanly, and download them as PDFs.
 
 The project perfectly matches the provided Figma UI specifications and features a robust, asynchronous background generation pipeline built with BullMQ, Redis, and WebSockets.
