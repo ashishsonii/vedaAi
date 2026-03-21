@@ -50,9 +50,9 @@ export default function Header({ title = "Assignment", showBack = false }: Heade
         
         <div className="flex items-center gap-3 bg-white pl-1.5 pr-4 py-1.5 rounded-full shadow-sm border border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors">
           <div className="w-8 h-8 rounded-full bg-[#FFE5D9] flex items-center justify-center overflow-hidden">
-            <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=FFE5D9`} alt="Avatar" className="w-full h-full object-cover"/>
+            <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=Ashish&backgroundColor=FFE5D9`} alt="Avatar" className="w-full h-full object-cover"/>
           </div>
-          <span className="text-[14px] font-bold text-gray-800">John Doe</span>
+          <span className="text-[14px] font-bold text-gray-800">Ashish Soni</span>
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
           </svg>
