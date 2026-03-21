@@ -10,23 +10,8 @@ import assignmentRoutes    from "./routes/assignment.routes"
 
 const app = express()
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",")
-  .map((s) => s.trim())
-  .filter(Boolean)
-
-app.use(
-  allowedOrigins?.length
-    ? cors({
-        origin: (origin, callback) => {
-          if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true)
-            return
-          }
-          callback(null, false)
-        },
-      })
-    : cors()
-)
+// Allow all origins to prevent Vercel blocking issues
+app.use(cors({ origin: "*" }))
 app.use(express.json())
 app.use("/api/assignments", assignmentRoutes)
 
