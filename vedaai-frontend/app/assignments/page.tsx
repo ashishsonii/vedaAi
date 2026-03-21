@@ -229,7 +229,7 @@ export default function AssignmentsPage() {
         href="/assignments/create"
         className="md:hidden fixed z-[60] w-12 h-12 rounded-full bg-white
           flex items-center justify-center active:scale-95 transition-all"
-        style={{ bottom: "80px", right: "16px", boxShadow: "0 2px 10px rgba(0,0,0,0.10)" }}
+        style={{ bottom: "105px", right: "16px", boxShadow: "0 2px 10px rgba(0,0,0,0.10)" }}
       >
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
           <path d="M12 4v16M4 12h16" stroke="#E4703D" strokeWidth="2.5" strokeLinecap="round"/>
