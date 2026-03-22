@@ -158,7 +158,7 @@ export default function CreateAssignmentPage() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-6 md:border md:border-white/70 md:rounded-[24px] md:px-8 md:py-6 md:bg-white/[0.35]">
+        <div className="max-w-4xl mx-auto space-y-6 border border-white/70 rounded-[24px] px-5 py-6 md:px-8 bg-white/[0.35]">
 
           {/* Section Header */}
           <div>
@@ -386,8 +386,11 @@ export default function CreateAssignmentPage() {
             </div>
           </div>
 
-          {/* ── Form Navigation Buttons ── */}
-          <div className="flex items-center justify-between gap-3 pt-4 pb-12 max-w-[320px] md:max-w-none mx-auto md:mx-0">
+        </div>{/* closes bordered form container */}
+
+        {/* ── Form Navigation Buttons (outside form card) ── */}
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between gap-3 pt-4 pb-12 max-w-[320px] md:max-w-none mx-auto md:mx-0 md:px-8">
             <button
               onClick={() => router.back()}
               className="flex items-center justify-center gap-2
@@ -415,8 +418,8 @@ export default function CreateAssignmentPage() {
               )}
             </button>
           </div>
-
         </div>
+
       </div>
 
     </div>
