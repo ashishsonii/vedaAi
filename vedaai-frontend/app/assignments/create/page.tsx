@@ -238,11 +238,6 @@ export default function CreateAssignmentPage() {
                 min={new Date().toISOString().split("T")[0]}
                 onChange={(e) => setFormField("dueDate", e.target.value)}
               />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 w-7 h-7 rounded-lg border-2 border-gray-300 flex items-center justify-center pointer-events-none">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.5">
-                  <path strokeLinecap="round" d="M12 5v14M5 12h14" />
-                </svg>
-              </div>
             </div>
             {formErrors.dueDate && (
               <p className="text-[12px] text-red-500 mt-1 pl-1 font-bold">{formErrors.dueDate}</p>
