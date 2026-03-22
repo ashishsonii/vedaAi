@@ -29,9 +29,12 @@ export default function CreateAssignmentPage() {
     updateQuestionType,
     submitAssignment,
     setCurrentId,
+    validateForm,
+    resetForm,
   } = useAssignmentStore()
 
   const [dragging, setDragging] = useState(false)
+  const [showNotification, setShowNotification] = useState(false)
 
   const totalQuestions = form.questionTypes.reduce((s, r) => s + r.count, 0)
   const totalMarks = form.questionTypes.reduce((s, r) => s + r.count * r.marks, 0)
@@ -47,10 +50,16 @@ export default function CreateAssignmentPage() {
   )
 
   const handleSubmit = async () => {
+    if (!validateForm()) {
+      setShowNotification(true)
+      setTimeout(() => setShowNotification(false), 3000)
+      return
+    }
     const id = await submitAssignment()
     if (id) {
       setCurrentId(id)
-      router.push(`/assignments/${id}`)
+      resetForm()
+      router.push("/assignments")
     }
   }
 
@@ -58,6 +67,20 @@ export default function CreateAssignmentPage() {
 
   return (
     <div className="min-h-screen bg-[#CECECE] md:bg-transparent flex flex-col">
+
+      {/* Validation Notification */}
+      <div 
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform ${
+          showNotification ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="bg-[#EF4444] text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span className="text-[14px] font-bold">Please fill in all required fields</span>
+        </div>
+      </div>
 
       {/* ── Mobile Top Header ── */}
       <div className="md:hidden flex items-center px-5 py-4 bg-[#CECECE] sticky top-0 z-30">
