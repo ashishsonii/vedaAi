@@ -149,16 +149,16 @@ export default function CreateAssignmentPage() {
       </div>
 
       {/* ── Scrollable content ── */}
-      <div className="flex-1 overflow-y-auto px-4 sm:px-8 py-6 pb-40 md:pb-16">
+      <div className="flex-1 overflow-y-auto px-4 sm:px-8 py-6 pb-20">
 
         {/* Progress bar */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="h-1 bg-gray-200 rounded-full mb-8 overflow-hidden">
             <div className="h-full w-1/2 bg-gray-900 rounded-full transition-all duration-500" />
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-6 md:border md:border-white/70 md:rounded-[24px] md:px-8 md:py-6 md:bg-white/[0.35]">
 
           {/* Section Header */}
           <div>
@@ -391,41 +391,37 @@ export default function CreateAssignmentPage() {
             </div>
           </div>
 
-        </div>
-      </div>
+          {/* ── Form Navigation Buttons ── */}
+          <div className="flex items-center justify-between gap-3 pt-4 pb-12 max-w-[320px] md:max-w-none mx-auto md:mx-0">
+            <button
+              onClick={() => router.back()}
+              className="flex items-center justify-center gap-2
+                py-[10px] md:py-2.5 px-6 md:px-8
+                bg-white border border-gray-200 rounded-full
+                text-[13px] md:text-[14px] font-extrabold text-gray-900 shadow-sm
+                hover:bg-gray-50 active:scale-[0.98] transition-all"
+            >
+              ← Previous
+            </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isGenerating}
+              className="flex items-center justify-center gap-2
+                py-[10px] md:py-2.5 px-6 md:px-8
+                bg-[#1C1C1E] rounded-full
+                text-[13px] md:text-[14px] font-extrabold text-white shadow-lg
+                hover:bg-black active:scale-[0.98]
+                disabled:opacity-60 disabled:cursor-not-allowed transition-all"
+            >
+              {isGenerating ? (
+                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : (
+                "Next →"
+              )}
+            </button>
+          </div>
 
-      {/* ── Sticky footer: Previous / Next ── */}
-      {/* Mobile: equal-width flex-1, bottom-[96px] gives breathing room above bottom nav */}
-      {/* Desktop: auto-sized justify-between, pinned to bottom */}
-      <div className="fixed bottom-[96px] left-0 right-0 md:left-[350px] md:bottom-0 z-20
-        bg-[#CECECE] md:bg-transparent border-t border-gray-200/60 md:border-none
-        px-5 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-0 md:justify-between">
-        <button
-          onClick={() => router.back()}
-          className="flex-1 md:flex-none flex items-center justify-center gap-2
-            py-[13px] md:py-3 px-0 md:px-6
-            bg-white border border-gray-200 rounded-full
-            text-[14px] font-extrabold text-gray-900 shadow-sm
-            hover:bg-gray-50 active:scale-[0.98] transition-all"
-        >
-          ← Previous
-        </button>
-        <button
-          onClick={handleSubmit}
-          disabled={isGenerating}
-          className="flex-1 md:flex-none flex items-center justify-center gap-2
-            py-[13px] md:py-3 px-0 md:px-6
-            bg-[#1C1C1E] rounded-full
-            text-[14px] font-extrabold text-white shadow-lg
-            hover:bg-black active:scale-[0.98]
-            disabled:opacity-60 disabled:cursor-not-allowed transition-all"
-        >
-          {isGenerating ? (
-            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          ) : (
-            "Next →"
-          )}
-        </button>
+        </div>
       </div>
 
     </div>

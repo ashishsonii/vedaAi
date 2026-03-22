@@ -22,19 +22,23 @@ export const useWebSocket = () => {
     (e: MessageEvent) => {
       try {
         const data = JSON.parse(e.data)
-        if (data.assignmentId && data.assignmentId !== currentId) return
+        // Removed early return so we can process list updates
 
         switch (data.type) {
           case "CONNECTED":
             setWsConnected(true)
             break
           case "ASSIGNMENT_GENERATING":
-            setStatus("generating")
-            if (data.progress !== undefined) setProgress(data.progress)
+            if (data.assignmentId === currentId) {
+              setStatus("generating")
+              if (data.progress !== undefined) setProgress(data.progress)
+            }
+            // Also fetch to update the list status
+            useAssignmentStore.getState().fetchAssignments()
             break
           case "ASSIGNMENT_COMPLETED":
-            setProgress(100)
-            if (data.assignmentId) {
+            if (data.assignmentId === currentId) {
+              setProgress(100)
               fetch(`${API_URL}/api/assignments/${data.assignmentId}`)
                 .then((r) => r.json())
                 .then((a) => {
@@ -42,10 +46,15 @@ export const useWebSocket = () => {
                   setStatus("completed")
                 })
             }
+            // Always refresh the assignments list so cards update
+            useAssignmentStore.getState().fetchAssignments()
             break
           case "ASSIGNMENT_FAILED":
-            setStatus("failed")
-            setError(data.error || "Generation failed")
+            if (data.assignmentId === currentId) {
+              setStatus("failed")
+              setError(data.error || "Generation failed")
+            }
+            useAssignmentStore.getState().fetchAssignments()
             break
         }
       } catch {}

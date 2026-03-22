@@ -4,9 +4,11 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAssignmentStore, Assignment } from "@/store/assignmentStore"
+import { useWebSocket } from "@/hooks/useWebSocket"
 
 export default function AssignmentsPage() {
   const router = useRouter()
+  useWebSocket()
   const { assignments, loadingList, fetchAssignments, deleteAssignment } =
     useAssignmentStore()
   const [search, setSearch] = useState("")
