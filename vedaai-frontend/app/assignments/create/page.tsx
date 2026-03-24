@@ -231,13 +231,22 @@ export default function CreateAssignmentPage() {
             <div className="relative">
               <input
                 type="date"
-                className={`w-full bg-white border rounded-full px-5 py-3.5 text-[14px] font-medium text-gray-400
-                  outline-none focus:ring-2 focus:ring-gray-200 appearance-none pr-14
+                className={`w-full bg-white border rounded-full px-5 py-3.5 text-[14px] font-semibold text-gray-800
+                  outline-none focus:ring-2 focus:ring-gray-200 appearance-none pr-14 cursor-pointer
                   ${formErrors.dueDate ? "border-red-400 bg-red-50" : "border-gray-200"}`}
                 value={form.dueDate}
                 min={new Date().toISOString().split("T")[0]}
                 onChange={(e) => setFormField("dueDate", e.target.value)}
+                onClick={(e) => {
+                  try { e.currentTarget.showPicker() } catch (err) {}
+                }}
               />
+              <svg 
+                className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none"
+                width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" strokeWidth="2.3"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
             {formErrors.dueDate && (
               <p className="text-[12px] text-red-500 mt-1 pl-1 font-bold">{formErrors.dueDate}</p>
