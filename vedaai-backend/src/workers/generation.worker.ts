@@ -62,8 +62,11 @@ const startWorker = async () => {
     },
     {
       connection:  getRedisConnection(),
-      concurrency: 3,
-    }
+      concurrency: 1,
+      stalledInterval: 300000, // 5 minutes (default 30s)
+      drainDelay: 300, // Increase idle wait from 5s to 300s
+      skipDelayCheck: true, // Stop polling for delayed jobs
+    } as any
   )
 
   console.log("🚀 Worker Started")

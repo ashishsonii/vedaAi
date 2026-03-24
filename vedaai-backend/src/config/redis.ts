@@ -9,6 +9,8 @@ export const getRedisConnection = () => {
       password: redisUrl.password,
       tls: redisUrl.protocol === "rediss:" ? {} : undefined,
       maxRetriesPerRequest: null,
+      enableReadyCheck: false,
+      family: 0,
     }
   }
   return _cached

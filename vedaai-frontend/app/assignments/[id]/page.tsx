@@ -23,12 +23,41 @@ export default function AssignmentResultPage() {
     fetchAssignment(id)
   }, [id, setCurrentId, fetchAssignment])
 
+  // Fallback polling in case WebSocket drops in production
+  useEffect(() => {
+    if (status !== "generating" || !id) return
+    const interval = setInterval(() => {
+      fetchAssignment(id)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [id, status, fetchAssignment])
+
   if (status === "completed" && currentAssignment?.result) {
     return (
       <div className="min-h-screen bg-[#CECECE] md:bg-transparent pb-24 md:pb-8">
+        {/* Desktop Header */}
         <div className="hidden md:block">
           <Header title="Assignment" showBack />
         </div>
+        
+        {/* Mobile Header */}
+        <div className="md:hidden flex items-center px-5 py-4 bg-[#CECECE] sticky top-0 z-30">
+          <button
+            onClick={() => router.push("/assignments")}
+            className="w-10 h-10 rounded-full bg-[#E3E3E3] flex items-center justify-center mr-3 flex-shrink-0"
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1C1C1E" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4M4 12L10 6M4 12L10 18" />
+            </svg>
+          </button>
+          <h1
+            className="flex-1 text-center text-[17px] font-[800] text-[#1C1C1E] mr-10 tracking-tight"
+            style={{ fontFamily: "var(--font-jakarta), Plus Jakarta Sans, sans-serif" }}
+          >
+            Assignment
+          </h1>
+        </div>
+
         <ExamPaper
           assignment={currentAssignment}
         />
@@ -38,9 +67,29 @@ export default function AssignmentResultPage() {
 
   return (
     <div className="min-h-screen bg-[#CECECE] md:bg-transparent">
+      {/* Desktop Header */}
       <div className="hidden md:block">
         <Header title="Assignment" showBack />
       </div>
+
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center px-5 py-4 bg-[#CECECE] sticky top-0 z-30">
+        <button
+          onClick={() => router.push("/assignments")}
+          className="w-10 h-10 rounded-full bg-[#E3E3E3] flex items-center justify-center mr-3 flex-shrink-0"
+        >
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1C1C1E" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4M4 12L10 6M4 12L10 18" />
+          </svg>
+        </button>
+        <h1
+          className="flex-1 text-center text-[17px] font-[800] text-[#1C1C1E] mr-10 tracking-tight"
+          style={{ fontFamily: "var(--font-jakarta), Plus Jakarta Sans, sans-serif" }}
+        >
+          {status === "failed" ? "Failed" : "Generating..."}
+        </h1>
+      </div>
+
       <div className="flex items-center justify-center min-h-[80vh]">
         <div className="text-center max-w-sm w-full px-6">
           {status === "failed" ? (
