@@ -63,8 +63,8 @@ const startWorker = async () => {
     {
       connection:  getRedisConnection(),
       concurrency: 1,
-      stalledInterval: 300000, // 5 minutes (default 30s)
-      drainDelay: 300, // Increase idle wait from 5s to 300s
+      stalledInterval: 240000, // 4 minutes (guarantees a check before Upstash's 5-min timeout)
+      drainDelay: 240, // 4 minutes
       skipDelayCheck: true, // Stop polling for delayed jobs
     } as any
   )
