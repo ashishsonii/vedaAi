@@ -8,6 +8,8 @@ import cors      from "cors"
 import { connectDb }       from "./config/db"
 import { initSocket }      from "./socket"
 import assignmentRoutes    from "./routes/assignment.routes"
+import bookRoutes          from "./routes/book.routes"
+import tutorRoutes         from "./routes/tutor.routes"
 
 const app = express()
 
@@ -15,6 +17,8 @@ const app = express()
 app.use(cors({ origin: "*" }))
 app.use(express.json())
 app.use("/api/assignments", assignmentRoutes)
+app.use("/api/books", bookRoutes)
+app.use("/api/tutor", tutorRoutes)
 
 app.get("/", (_req, res) => res.send("VedaAI Backend Running 🚀"))
 

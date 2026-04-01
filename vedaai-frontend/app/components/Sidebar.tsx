@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -9,6 +10,7 @@ const NAV = [
   { label: "Assignments", href: "/assignments", icon: AssignmentsIcon },
   { label: "AI Teacher's Toolkit", href: "/toolkit", icon: ToolkitIcon },
   { label: "My Library", href: "/library", icon: LibraryIcon },
+  { label: "English Tutor", href: "/tutor", icon: TutorIcon },
 ]
 
 const MOBILE_NAV = [
@@ -20,6 +22,12 @@ const MOBILE_NAV = [
 
 export default function Sidebar() {
   const path = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [path])
 
   return (
     <>
@@ -126,12 +134,77 @@ export default function Sidebar() {
               <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=b6e3f4" alt="User" className="w-full h-full object-cover" />
             </div>
             {/* Hamburger */}
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1C1C1E" strokeWidth="2.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <button onClick={() => setIsMobileMenuOpen(true)} className="p-1 -mr-1">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1C1C1E" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
         </div>
       </header>
+
+      {/* -- MOBILE SLIDE-OUT MENU -- */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity" 
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Drawer */}
+          <div className="relative flex flex-col w-4/5 max-w-sm h-full bg-[#F8F8F8] shadow-2xl animate-in slide-in-from-left duration-300">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <VedaAILogo />
+              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:bg-gray-200 rounded-full">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+              {NAV.map(({ label, href, icon: Icon }) => {
+                const active = path.startsWith(href)
+                const count = label === "Assignments" ? 10 : null
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-[15px] font-medium
+                      transition-all duration-200
+                      ${active ? "bg-[#EEEEEE] text-[#1C1C1E] font-semibold" : "text-[#6B7280]"}`}
+                  >
+                    <Icon active={active} />
+                    <span>{label}</span>
+                    {count !== null && (
+                      <span className="ml-auto bg-[#E4703D] text-white text-[11px] font-bold
+                        px-2.5 py-0.5 rounded-full min-w-[24px] text-center">
+                        {count}
+                      </span>
+                    )}
+                  </Link>
+                )
+              })}
+            </nav>
+            
+            <div className="p-4 border-t border-gray-200 bg-white">
+              <div className="flex items-center gap-3 px-2 py-2">
+                <div className="w-10 h-10 rounded-full bg-[#FFE5D9] border-2 border-white flex items-center justify-center overflow-hidden flex-shrink-0">
+                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=School&backgroundColor=FFE5D9" alt="Avatar" className="w-full h-full object-cover" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[14px] font-bold text-[#1C1C1E] truncate">Delhi Public School</p>
+                  <p className="text-[12px] text-[#9CA3AF] truncate font-medium">Bokaro Steel City</p>
+                </div>
+              </div>
+              <Link href="/settings" className="flex items-center justify-center gap-2 mt-4 py-2.5 w-full rounded-xl bg-gray-100 text-sm font-medium text-gray-700">
+                <SettingsIcon /> Settings
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* -- Mobile Bottom Nav (floating dark pill) -- */}
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
@@ -215,6 +288,16 @@ function LibraryIcon({ active, darkBg }: { active: boolean; darkBg?: boolean }) 
         d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M14 2v6h6" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 11v6M9 14h6" />
+    </svg>
+  )
+}
+function TutorIcon({ active, darkBg }: { active: boolean; darkBg?: boolean }) {
+  const c = darkBg ? (active ? "white" : "rgba(255,255,255,0.4)") : (active ? "#1C1C1E" : "#9CA3AF")
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth={active ? "2.2" : "1.8"}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 10v2a7 7 0 01-14 0v-2" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 19v4M8 23h8" />
     </svg>
   )
 }
