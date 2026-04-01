@@ -206,8 +206,8 @@ export default function Sidebar() {
         </div>
       )}
 
-      {/* -- Mobile Bottom Nav (floating dark pill) -- */}
-      <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
+      {/* -- Mobile Bottom Nav (floating dark pill) — hidden when drawer is open -- */}
+      {!isMobileMenuOpen && <div className="md:hidden fixed bottom-4 left-4 right-4 z-50">
         <div className="bg-[#1C1C1E] rounded-[28px] px-4 py-2 flex items-center justify-around"
           style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.35)" }}>
           {MOBILE_NAV.map(({ label, href, icon: Icon }) => {
@@ -228,7 +228,7 @@ export default function Sidebar() {
             )
           })}
         </div>
-      </div>
+      </div>}
     </>
   )
 }
