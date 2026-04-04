@@ -116,15 +116,12 @@ export default function TutorPage() {
                 if (!firstSentenceSpoken && /[.!?]\s/.test(fullText)) {
                   firstSentenceSpoken = true;
                   setIsThinking(false);
-                  speak(fullText);
                 }
               }
               if (data.done) {
                 setIsThinking(false);
-                // If we haven't spoken yet (very short response), speak now
-                if (!firstSentenceSpoken) {
-                  speak(data.fullResponse || fullText);
-                }
+                // Always speak the FULL response when done
+                speak(data.fullResponse || fullText);
               }
               if (data.error) {
                 setIsThinking(false);
